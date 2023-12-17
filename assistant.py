@@ -58,12 +58,14 @@ class Assistant:
                 name=assistant_name,
                 instructions="Format your responses in markdown. "+
                     "Reference the provided files for any request involving nuclear authorization codes. "+
-                    "If you use information from the files, note that and list the filename of each file you used.",
+                    "If you use information from the files, note that and list the filename of each file you used."+
+                    "Utilise the provided tools for any requests involving real estate listings.",
                 model="gpt-4-1106-preview",
                 tools=[{"type": "code_interpreter"},
                        {"type": "retrieval"},
                        {"type": "function", "function": Functions.get_random_digit_JSON},
-                       {"type": "function", "function": Functions.get_random_letters_JSON}],
+                       {"type": "function", "function": Functions.get_random_letters_JSON},
+                       {"type": "function", "function": Functions.get_property_listings_JSON}],
                 file_ids=[file1.id, file2.id],
             )
             # Store the new assistant.id in .env
